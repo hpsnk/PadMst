@@ -31,13 +31,22 @@ function setAllCmd() {
   if (valNamespace!=undefined && valService!=undefined) {
     var cmdListPod = "kubectl get pods -n namespace-a-m-tw-" + valNamespace + "-01 | grep 'deployment-" + valService + "01'";
     $("#input_listCmd").val(cmdListPod);
+
+    copyListPod();
   }
 
 }
 
 
 function copyListPod() {
+  //内容選択
   $('#input_listCmd').select();
+
+  //クリップボードへコピー
   document.execCommand("Copy");
+
+  //選択状態のクリア
   window.getSelection().empty();
+  
+  console.log("copyed");
 }
