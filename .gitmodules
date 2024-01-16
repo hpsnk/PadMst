@@ -1,0 +1,9 @@
+[submodule "PadMstWebVue"]
+	path = PadMstWebVue
+	url = git@github.com:hpsnk/PadMstWebVue.git
+[submodule "PadMstData"]
+	path = PadMstData
+	url = git@github.com:hpsnk/PadMstData.git
+[submodule "PadMstJs"]
+	path = PadMstJs
+	url = git@github.com:hpsnk/PadMstJs.git
