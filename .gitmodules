@@ -7,3 +7,6 @@
 [submodule "PadMstJs"]
 	path = PadMstJs
 	url = git@github.com:hpsnk/PadMstJs.git
+[submodule "PadMstWeb"]
+	path = PadMstWeb
+	url = git@github.com:hpsnk/PadMstWeb.git
