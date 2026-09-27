@@ -21,8 +21,8 @@ REPOS=(
     "000_PADDashFormation|git@github.com:Mapaler/PADDashFormation.git"
     "010_PadMstData|git@github.com:hpsnk/PadMstData.git|main"
     "020_PadMstJs|git@github.com:hpsnk/PadMstJs.git|main"
-    # "030_PadMstWeb|git@github.com:hpsnk/PadMstWeb.git|?"
-    # "040_PadMstWebVue|git@github.com:hpsnk/PadMstWebVue.git|?"
+    "030_PadMstWeb|git@github.com:hpsnk/PadMstWeb.git|main"
+    "040_PadMstWebVue|git@github.com:hpsnk/PadMstWebVue.git|main"
 )
 
 echo -e "当前工作路径: ${GREEN}$(pwd)${NC}\n"
