@@ -41,24 +41,34 @@ for item in "${REPOS[@]}"; do
     echo -e "正在处理仓库: ${GREEN}$DIR${NC}"
     echo -e "仓库地址: $URL"
     
-    # 检查本地目录是否存在，存在则直接跳过 clone 及后续操作
+    # 检查本地目录是否存在
     if [ -d "$DIR" ]; then
-        echo -e "${YELLOW}目录 $DIR 已存在，跳过该仓库的克隆与更新。${NC}\n"
-        continue
-    fi
+        echo -e "${YELLOW}目录 $DIR 已存在，正在执行 git pull 更新...${NC}"
+        cd "$DIR"
+        
+        # 如果指定了分支，先切换到该分支再拉取最新代码
+        if [ -n "$BRANCH" ]; then
+            echo -e "确保当前为指定分支: ${GREEN}$BRANCH${NC}"
+            git checkout "$BRANCH"
+        fi
+        
+        git pull
+        cd ..
+    else
+        echo -e "${YELLOW}正在克隆仓库...${NC}"
+        git clone "$URL" "$DIR"
+        cd "$DIR"
 
-    echo -e "${YELLOW}正在克隆仓库...${NC}"
-    git clone "$URL" "$DIR"
-    cd "$DIR"
-
-    # 根据是否传了 BRANCH 参数做不同处理
-    if [ -n "$BRANCH" ]; then
-        echo -e "切换到指定分支: ${GREEN}$BRANCH${NC}"
-        git checkout "$BRANCH"
+        # 根据是否传了 BRANCH 参数做不同处理
+        if [ -n "$BRANCH" ]; then
+            echo -e "切换到指定分支: ${GREEN}$BRANCH${NC}"
+            git checkout "$BRANCH"
+        fi
+        
+        # 返回上级目录
+        cd ..
     fi
     
-    # 返回上级目录
-    cd ..
     echo -e "${GREEN}✓ $DIR 处理完成${NC}\n"
 done
 
